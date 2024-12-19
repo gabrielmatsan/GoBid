@@ -1,0 +1,50 @@
+@baseUrl = http://localhost:5080/api/v1
+@csrfToken = o6HoSQDY2BNLTIqVi9vXBTA9n1EDX3bELfm8u6djmamJcki/xUFXDIhEHCx6o2sWSGMIvYVnF8UoRp6KPh0jiw==
+
+# @name create_user
+
+POST {{baseUrl}}/users/signup
+Content-Type: application/json
+
+{
+  "username":"gabrielsantos123",
+  "password": "123456789",
+  "email":"gabriel@outlook.com",
+  "bio":"gosto de codar"
+}
+
+###
+
+# @name login_user
+
+POST {{baseUrl}}/users/login
+Content-Type: application/json
+X-CSRF-Token: kWPnK51MTVJh/Qi5UcQNnai2Ah7tsmkfOpZQVN3rU6W7sEfdWNXCTaL1ngCgvLGO0OiV8muKCB4/KXJlRJXphw==
+
+{
+  "email": "gabriel@outlook.com",
+  "password": "123456789"
+}
+
+###
+
+# @name logout_user
+
+POST {{baseUrl}}/users/logout
+Content-Type: application/json
+
+{
+  "email":"gabriel@outlook.com",
+  "password": "123456789"
+}
+
+
+###
+
+# @name get_csrf_token
+
+# Obter o Token CSRF
+GET {{baseUrl}}/csrf-token
+Content-Type: application/json
+
+
