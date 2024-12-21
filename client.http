@@ -15,11 +15,11 @@ Content-Type: application/json
 
 ###
 
-# @name login_user
+# @name login_user_with_csrf
 
 POST {{baseUrl}}/users/login
 Content-Type: application/json
-X-CSRF-Token: kWPnK51MTVJh/Qi5UcQNnai2Ah7tsmkfOpZQVN3rU6W7sEfdWNXCTaL1ngCgvLGO0OiV8muKCB4/KXJlRJXphw==
+#X-CSRF-Token: qxRvpDML+LOUMKXllUegUMzitTOSQH6WQyYixrdhumwE62OyndLauJLje3mnKgMX8CvuBFmYGCuntoVik6Br6A==
 
 {
   "email": "gabriel@outlook.com",
@@ -32,6 +32,7 @@ X-CSRF-Token: kWPnK51MTVJh/Qi5UcQNnai2Ah7tsmkfOpZQVN3rU6W7sEfdWNXCTaL1ngCgvLGO0O
 
 POST {{baseUrl}}/users/logout
 Content-Type: application/json
+X-CSRF-Token: qxRvpDML+LOUMKXllUegUMzitTOSQH6WQyYixrdhumwE62OyndLauJLje3mnKgMX8CvuBFmYGCuntoVik6Br6A==
 
 {
   "email":"gabriel@outlook.com",
@@ -46,5 +47,20 @@ Content-Type: application/json
 # Obter o Token CSRF
 GET {{baseUrl}}/csrf-token
 Content-Type: application/json
+
+
+###
+
+# @name create_product
+
+POST {{baseUrl}}/products/
+Content-Type: application/json
+
+{
+  "product_name": "Camisa do Flamengo",
+  "description": "Descrição do produto 1",
+  "price": 100.00,
+  "auction_end": "2024-12-31T23:59:59Z"
+}
 
 

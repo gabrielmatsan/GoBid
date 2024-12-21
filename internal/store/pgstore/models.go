@@ -5,22 +5,43 @@
 package pgstore
 
 import (
+	"time"
+
 	"github.com/google/uuid"
-	"github.com/jackc/pgx/v5/pgtype"
 )
 
+type Bid struct {
+	ID        uuid.UUID `json:"id"`
+	ProductID uuid.UUID `json:"product_id"`
+	BidderID  uuid.UUID `json:"bidder_id"`
+	CreatedAt time.Time `json:"created_at"`
+	BidAmount float64   `json:"bid_amount"`
+}
+
+type Product struct {
+	ID          uuid.UUID `json:"id"`
+	SellerID    uuid.UUID `json:"seller_id"`
+	ProductName string    `json:"product_name"`
+	Description string    `json:"description"`
+	Price       float64   `json:"price"`
+	AuctionEnd  time.Time `json:"auction_end"`
+	IsSold      bool      `json:"is_sold"`
+	CreatedAt   time.Time `json:"created_at"`
+	UpdatedAt   time.Time `json:"updated_at"`
+}
+
 type Session struct {
-	Token  string             `json:"token"`
-	Data   []byte             `json:"data"`
-	Expiry pgtype.Timestamptz `json:"expiry"`
+	Token  string    `json:"token"`
+	Data   []byte    `json:"data"`
+	Expiry time.Time `json:"expiry"`
 }
 
 type User struct {
-	ID           uuid.UUID          `json:"id"`
-	Username     string             `json:"username"`
-	Email        string             `json:"email"`
-	PasswordHash []byte             `json:"password_hash"`
-	Bio          string             `json:"bio"`
-	CreatedAt    pgtype.Timestamptz `json:"created_at"`
-	UpdatedAt    pgtype.Timestamptz `json:"updated_at"`
+	ID           uuid.UUID `json:"id"`
+	Username     string    `json:"username"`
+	Email        string    `json:"email"`
+	PasswordHash []byte    `json:"password_hash"`
+	Bio          string    `json:"bio"`
+	CreatedAt    time.Time `json:"created_at"`
+	UpdatedAt    time.Time `json:"updated_at"`
 }
